@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Includes\sqlite3\sqlite3.h" />
+    <ClInclude Include="Source\Charge.h" />
     <ClInclude Include="Source\Commands.h" />
     <ClInclude Include="Source\Hooks.h" />
     <ClInclude Include="Source\Public\Database\DatabaseFactory.h" />

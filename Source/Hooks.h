@@ -2,7 +2,6 @@
 
 
 DECLARE_HOOK(AShooterCharacter_Die, bool, AShooterCharacter*, float, FDamageEvent*, AController*, AActor*);
-
 bool Hook_AShooterCharacter_Die(AShooterCharacter* shooter_character, float KillingDamage, FDamageEvent* DamageEvent, AController* Killer, AActor* DamageCauser)
 {
 	FString playername = shooter_character->PlayerNameField();
@@ -14,7 +13,6 @@ bool Hook_AShooterCharacter_Die(AShooterCharacter* shooter_character, float Kill
 
 
 DECLARE_HOOK(APrimalStructureItemContainer_ServerOpenRemoteInventory, void, APrimalStructureItemContainer*, AShooterPlayerController*);
-
 void Hook_APrimalStructureItemContainer_ServerOpenRemoteInventory(APrimalStructureItemContainer* structure, AShooterPlayerController* pc)
 {
 	if (structure->DescriptiveNameField().Equals("Charge Node"))
@@ -24,8 +22,6 @@ void Hook_APrimalStructureItemContainer_ServerOpenRemoteInventory(APrimalStructu
 
 	APrimalStructureItemContainer_ServerOpenRemoteInventory_original(structure, pc);
 }
-
-//void BPCraftingFinishedNotification(UPrimalItem* itemToBeCrafted)  { NativeCall<void, UPrimalItem*>(this, "UPrimalInventoryComponent.BPCraftingFinishedNotification(UPrimalItem*)", itemToBeCrafted) ; }
 
 DECLARE_HOOK(UPrimalInventoryComponent_BPCraftingFinishedNotification, void, UPrimalInventoryComponent* , UPrimalItem*);
 void Hook_UPrimalInventoryComponent_BPCraftingFinishedNotification(UPrimalInventoryComponent* invComp,UPrimalItem* itemToBeCrafted)

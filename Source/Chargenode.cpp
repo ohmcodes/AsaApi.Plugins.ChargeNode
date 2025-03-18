@@ -4,6 +4,8 @@
 
 #include "Utils.h"
 
+#include "Charge.h"
+
 #include "RepairItems.h"
 
 #include "Hooks.h"

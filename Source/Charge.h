@@ -49,14 +49,7 @@ void ChargeCallback(AShooterPlayerController* pc, FString* param, int, int)
 
 	if (!structure) return;
 
-	if (!structure->DescriptiveNameField().Equals("Charge Node")) return;
-
-	FProperty* currentNodeState = structure->FindProperty(FName("currentNodeState", EFindName::FNAME_Add));
-
-	currentNodeState->Set(structure, 2);
-	structure->MulticastProperty(FName("currentNodeState", EFindName::FNAME_Add), false);
-
-	structure->BeginPlay();
+	OverrideChargeNodeSettings(structure);
 
 	// points deductions
 	Points(pc->GetEOSId(), command.value("Cost", 0));

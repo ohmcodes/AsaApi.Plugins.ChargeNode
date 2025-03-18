@@ -4,23 +4,63 @@
 void OverrideChargeNodeSettings(APrimalStructureItemContainer* structure)
 {
 
-	FProperty* currentNodeState = structure->FindProperty(FName("currentNodeState", EFindName::FNAME_Add));
-	FProperty* cooldownToGainChargeAfterTurnOff = structure->FindProperty(FName("cooldownToGainChargeAfterTurnOff", EFindName::FNAME_Add));
-	FProperty* cooldownToGainChargeAfterCrafting = structure->FindProperty(FName("cooldownToGainChargeAfterCrafting", EFindName::FNAME_Add));
-	FProperty* chargeAddedToBatteryPerSecond = structure->FindProperty(FName("chargeAddedToBatteryPerSecond", EFindName::FNAME_Add));
-	
+	FString mapName;
+	AsaApi::GetApiUtils().GetWorld()->GetMapName(&mapName);
 
+	if (!mapName.Equals("Aberration_WP")) return;
+
+	if (!structure->DescriptiveNameField().Equals("Charge Node")) return;
+
+
+	FProperty* currentNodeState = structure->FindProperty(FName("currentNodeState", EFindName::FNAME_Add));
 	currentNodeState->Set(structure, 2);
 	structure->MulticastProperty(FName("currentNodeState", EFindName::FNAME_Add), false);
 
+	FProperty* cooldownToGainChargeAfterTurnOff = structure->FindProperty(FName("cooldownToGainChargeAfterTurnOff", EFindName::FNAME_Add));
 	cooldownToGainChargeAfterTurnOff->Set(structure, double(0.0));
 	structure->MulticastProperty(FName("cooldownToGainChargeAfterTurnOff", EFindName::FNAME_Add), false);
 
+	FProperty* cooldownToGainChargeAfterCrafting = structure->FindProperty(FName("cooldownToGainChargeAfterCrafting", EFindName::FNAME_Add));
 	cooldownToGainChargeAfterCrafting->Set(structure, double(0.0));
 	structure->MulticastProperty(FName("cooldownToGainChargeAfterCrafting", EFindName::FNAME_Add), false);
 
+	FProperty* chargeAddedToBatteryPerSecond = structure->FindProperty(FName("chargeAddedToBatteryPerSecond", EFindName::FNAME_Add));
 	chargeAddedToBatteryPerSecond->Set(structure, double(5.0));
 	structure->MulticastProperty(FName("chargeAddedToBatteryPerSecond", EFindName::FNAME_Add), false);
+
+	FProperty* currentChargeAmount = structure->FindProperty(FName("currentChargeAmount", EFindName::FNAME_Add));
+	chargeAddedToBatteryPerSecond->Set(structure, double(5000.0));
+	structure->MulticastProperty(FName("currentChargeAmount", EFindName::FNAME_Add), false);
+
+
+	UPrimalInventoryComponent* invComp = structure->MyInventoryComponentField();
+
+	// Changing inventory slot
+	invComp->MaxInventoryItemsField() = 300;
+	invComp->InvUpdatedFrameField();
+	structure->MulticastProperty(FName("MaxInventoryItems", EFindName::FNAME_Add), false);
+
+
+	if (invComp)
+	{
+		for (UPrimalItem* item : invComp->InventoryItemsField())
+		{
+			// No Battery Charging
+			if (item->DescriptiveNameBaseField().Contains("Battery"))
+			{
+				item->ItemDurabilityField() = item->GetMaxDurability();
+				item->UpdatedItem(false, false);
+			}
+
+			// No Crafting time
+			if (item->bIsEngram().Get() && item->DescriptiveNameBaseField().Equals("Element"))
+			{
+				item->BlueprintTimeToCraftField() = 30.0f;
+			}
+		}
+	}
+
+
 
 
 	structure->BeginPlay();

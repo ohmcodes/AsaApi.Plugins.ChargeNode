@@ -55,7 +55,7 @@ void OverrideChargeNodeSettings(APrimalStructureItemContainer* structure)
 			// No Crafting time
 			if (item->bIsEngram().Get() && item->DescriptiveNameBaseField().Equals("Element"))
 			{
-				item->BlueprintTimeToCraftField() = 30.0f;
+				item->BlueprintTimeToCraftField() = 0.0f;
 			}
 		}
 	}

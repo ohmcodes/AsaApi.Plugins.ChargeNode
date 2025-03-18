@@ -26,7 +26,7 @@ void OnServerReady()
 	Log::GetLog()->info("Chargenode Initialized");
 
 	ReadConfig();
-	//LoadDatabase();
+	LoadDatabase();
 	AddOrRemoveCommands();
 	AddReloadCommands();
 	//SetTimers();

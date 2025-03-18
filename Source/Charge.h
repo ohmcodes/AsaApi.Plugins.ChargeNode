@@ -19,6 +19,8 @@ void ChargeCallback(AShooterPlayerController* pc, FString* param, int, int)
 
 	if (!structure) return;
 
+	if (!structure->DescriptiveNameField().Equals("Charge Node")) return;
+
 	FProperty* currentNodeState = structure->FindProperty(FName("currentNodeState", EFindName::FNAME_Add));
 
 	currentNodeState->Set(structure, 2);

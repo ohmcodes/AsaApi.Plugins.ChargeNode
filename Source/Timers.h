@@ -2,7 +2,7 @@
 void TimerCallback()
 {
 	// sample broadcast every 20secs
-	if (PluginTemplate::counter == 20)
+	if (Chargenode::counter == 20)
 	{
 		Log::GetLog()->info("Server is up!");
 
@@ -11,13 +11,13 @@ void TimerCallback()
 	}
 
 	// sample notif every 50secs
-	if (PluginTemplate::counter == 50)
+	if (Chargenode::counter == 50)
 	{
 		AsaApi::GetApiUtils().SendNotificationToAll(FColorList::Blue, 1.3f, 15.0f, nullptr, "Hooray Welcome to the server! enjoy!");
 	}
 
 
-	PluginTemplate::counter++;
+	Chargenode::counter++;
 }
 
 
@@ -25,10 +25,10 @@ void SetTimers(bool addTmr = true)
 {
 	if (addTmr)
 	{
-		AsaApi::GetCommands().AddOnTimerCallback("PluginTemplateTimerTick", &TimerCallback);
+		AsaApi::GetCommands().AddOnTimerCallback("ChargenodeTimerTick", &TimerCallback);
 	}
 	else
 	{
-		AsaApi::GetCommands().RemoveOnTimerCallback("PluginTemplateTimerTick");
+		AsaApi::GetCommands().RemoveOnTimerCallback("ChargenodeTimerTick");
 	}
 }

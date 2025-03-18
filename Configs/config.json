@@ -13,7 +13,7 @@
     "User": "",
     "Password": "",
     "Database": "",
-    "TableName": "PluginTemplate",
+    "TableName": "Chargenode",
     "Port": 3306,
     "MysqlSSLMode": -1,
     "MysqlTLSVersion": "",

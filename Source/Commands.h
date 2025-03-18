@@ -2,7 +2,7 @@
 
 void AddOrRemoveCommands(bool addCmd = true)
 {
-	const FString RepairItems = PluginTemplate::config["Commands"]["RepairItemCMD"].get<std::string>().c_str();
+	const FString RepairItems = Chargenode::config["Commands"]["RepairItemCMD"].get<std::string>().c_str();
 	if (!RepairItems.IsEmpty())
 	{
 		if (addCmd)
@@ -15,7 +15,7 @@ void AddOrRemoveCommands(bool addCmd = true)
 		}
 	}
 
-	const FString DeletePlayer = PluginTemplate::config["Commands"]["DeletePlayerCMD"].get<std::string>().c_str();
+	const FString DeletePlayer = Chargenode::config["Commands"]["DeletePlayerCMD"].get<std::string>().c_str();
 	if (!DeletePlayer.IsEmpty())
 	{
 		if (addCmd)

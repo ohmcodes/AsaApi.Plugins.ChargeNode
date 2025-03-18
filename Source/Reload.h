@@ -47,12 +47,12 @@ void AddReloadCommands(bool addCmd = true)
 {
 	if (addCmd)
 	{
-		AsaApi::GetCommands().AddConsoleCommand("PluginTemplate.Reload", &ReloadConfig);
-		AsaApi::GetCommands().AddRconCommand("PluginTemplate.Reload", &ReloadConfigRcon);
+		AsaApi::GetCommands().AddConsoleCommand("Chargenode.Reload", &ReloadConfig);
+		AsaApi::GetCommands().AddRconCommand("Chargenode.Reload", &ReloadConfigRcon);
 	}
 	else
 	{
-		AsaApi::GetCommands().RemoveConsoleCommand("PluginTemplate.Reload");
-		AsaApi::GetCommands().RemoveRconCommand("PluginTemplate.Reload");
+		AsaApi::GetCommands().RemoveConsoleCommand("Chargenode.Reload");
+		AsaApi::GetCommands().RemoveRconCommand("Chargenode.Reload");
 	}
 }

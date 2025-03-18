@@ -1,6 +1,6 @@
 #include "API/ARK/Ark.h"
 
-#include "PluginTemplate.h"
+#include "Chargenode.h"
 
 #include "Utils.h"
 
@@ -8,7 +8,7 @@
 
 #include "Hooks.h"
 
-#include "Timers.h"
+//#include "Timers.h"
 
 #include "Commands.h"
 
@@ -21,13 +21,13 @@
 
 void OnServerReady()
 {
-	Log::GetLog()->info("PluginTemplate Initialized");
+	Log::GetLog()->info("Chargenode Initialized");
 
 	ReadConfig();
-	LoadDatabase();
+	//LoadDatabase();
 	AddOrRemoveCommands();
 	AddReloadCommands();
-	SetTimers();
+	//SetTimers();
 	SetHooks();
 }
 
@@ -55,6 +55,6 @@ extern "C" __declspec(dllexport) void Plugin_Unload()
 
 	AddOrRemoveCommands(false);
 	AddReloadCommands(false);
-	SetTimers(false);
+	//SetTimers(false);
 	SetHooks(false);
 }

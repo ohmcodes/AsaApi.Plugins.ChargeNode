@@ -9,12 +9,12 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 
 	if (command.is_null() || (!command.is_null() && command.value("Enabled", false) == false))
 	{
-		if (PluginTemplate::config["Debug"].value("Permissions", false) == true)
+		if (Chargenode::config["Debug"].value("Permissions", false) == true)
 		{
 			Log::GetLog()->info("{} No permissions. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
 		}
 
-		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsPermErrorMSG", "You don't have permission to use this command.").c_str());
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, Chargenode::config["Messages"].value("RepairItemsPermErrorMSG", "You don't have permission to use this command.").c_str());
 
 		return;
 	}
@@ -22,12 +22,12 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 	// points checking
 	if (Points(pc->GetEOSId(), command.value("Cost", 0), true) == false)
 	{
-		if (PluginTemplate::config["Debug"].value("Points", false) == true)
+		if (Chargenode::config["Debug"].value("Points", false) == true)
 		{
 			Log::GetLog()->info("{} don't have points. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
 		}
 
-		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsPointsErrorMSG", "Not enough points.").c_str());
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, Chargenode::config["Messages"].value("RepairItemsPointsErrorMSG", "Not enough points.").c_str());
 
 		return;
 	}
@@ -42,7 +42,7 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 
 	TArray<UPrimalItem*> playerInv = invComp->InventoryItemsField();
 
-	bool ignoreMaterials = PluginTemplate::config["General"]["IgnoreInvRepairRequirements"].get<bool>();
+	bool ignoreMaterials = Chargenode::config["General"]["IgnoreInvRepairRequirements"].get<bool>();
 
 	int affectedItemsCounter = 0;
 	for (UPrimalItem* item : playerInv)
@@ -84,7 +84,7 @@ void RepairItemsCallback(AShooterPlayerController* pc, FString* param, int, int)
 
 	if (affectedItemsCounter > 0)
 	{
-		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Green, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsMSG", "All items has been repaired.").c_str(), pc->GetCharacterName().ToString());
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Green, 1.3f, 15.0f, nullptr, Chargenode::config["Messages"].value("RepairItemsMSG", "All items has been repaired.").c_str(), pc->GetCharacterName().ToString());
 	}
 }
 
@@ -103,12 +103,12 @@ void DeletePlayerCallback(AShooterPlayerController* pc, FString* param, int, int
 
 	if (command.is_null() || (!command.is_null() && command.value("Enabled", false) == false))
 	{
-		if (PluginTemplate::config["Debug"].value("Permissions", false) == true)
+		if (Chargenode::config["Debug"].value("Permissions", false) == true)
 		{
 			Log::GetLog()->info("{} No permissions. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
 		}
 
-		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsPermErrorMSG", "You don't have permission to use this command.").c_str());
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, Chargenode::config["Messages"].value("RepairItemsPermErrorMSG", "You don't have permission to use this command.").c_str());
 
 		return;
 	}
@@ -116,12 +116,12 @@ void DeletePlayerCallback(AShooterPlayerController* pc, FString* param, int, int
 	// points checking
 	if (Points(pc->GetEOSId(), command.value("Cost", 0), true) == false)
 	{
-		if (PluginTemplate::config["Debug"].value("Points", false) == true)
+		if (Chargenode::config["Debug"].value("Points", false) == true)
 		{
 			Log::GetLog()->info("{} don't have points. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
 		}
 
-		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, PluginTemplate::config["Messages"].value("RepairItemsPointsErrorMSG", "Not enough points.").c_str());
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, Chargenode::config["Messages"].value("RepairItemsPointsErrorMSG", "Not enough points.").c_str());
 
 		return;
 	}

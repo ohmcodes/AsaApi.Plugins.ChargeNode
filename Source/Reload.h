@@ -3,9 +3,10 @@ void Reload()
 {
 	ReadConfig();
 
-	//AddOrRemoveCommands(false);
-
-	//AddOrRemoveCommands();
+	// TODO: might cause crash after uncommented
+	AddOrRemoveCommands(false);
+	// TODO: might cause crash after uncommented
+	AddOrRemoveCommands();
 }
 
 void ReloadConfig(APlayerController* pc, FString*, bool)

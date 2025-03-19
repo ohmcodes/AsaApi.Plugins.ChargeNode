@@ -1,6 +1,6 @@
 {
   "FullName": "Chargenode",
-  "Description": "A Super simple Plugin that actually works",
+  "Description": "Change Properties of Charge Node",
   "Version": 1.0,
   "MinApiVersion": 1.18
 }

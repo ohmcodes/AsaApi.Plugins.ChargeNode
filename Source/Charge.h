@@ -28,7 +28,7 @@ void ChargeCallback(AShooterPlayerController* pc, FString* param, int, int)
 			Log::GetLog()->info("{} don't have points. Command: {}", pc->GetCharacterName().ToString(), __FUNCTION__);
 		}
 
-		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, Chargenode::config["Messages"].value("RepairItemsPointsErrorMSG", "Not enough points.").c_str());
+		AsaApi::GetApiUtils().SendNotification(pc, FColorList::Red, 1.3f, 15.0f, nullptr, Chargenode::config["Messages"].value("PointsErrorMSG", "Not enough points.").c_str());
 
 		return;
 	}

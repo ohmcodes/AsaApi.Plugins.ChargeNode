@@ -3,12 +3,19 @@
     "Debug": true,
     "IgnoreInvRepairRequirements": true
   },
+  "Debug": {
+    "PluginTemplate": true,
+    "Permissions": true,
+    "Points": true
+  },
   "Commands": {
-    "RepairItemCMD": "/repairitems",
-    "DeletePlayerCMD": "/deleteplayer"
+    "ChargeCMD": "/charge"
+  },
+  "Messages": {
+    "PointsErrorMSG": "Not enough points."
   },
   "PluginDBSettings": {
-    "UseMySQL": false,
+    "UseMySQL": true,
     "Host": "",
     "User": "",
     "Password": "",
@@ -18,5 +25,50 @@
     "MysqlSSLMode": -1,
     "MysqlTLSVersion": "",
     "SQLiteDatabasePath": ""
+  },
+  "PermissionsDBSettings": {
+    "Enabled": false,
+    "UseMySQL": false,
+    "Host": "",
+    "User": "",
+    "Password": "",
+    "Database": "",
+    "TableName": "Players",
+    "UniqueIDField": "EOS_Id",
+    "PermissionGroupField": "PermissionGroups",
+    "Port": 3306,
+    "MysqlSSLMode": -1,
+    "MysqlTLSVersion": "",
+    "SQLiteDatabasePath": ""
+  },
+  "PointsDBSettings": {
+    "Enabled": false,
+    "UseMySQL": false,
+    "Host": "",
+    "User": "",
+    "Password": "",
+    "Database": "",
+    "TableName": "ArkShopPlayers",
+    "UniqueIDField": "EosId",
+    "PointsField": "Points",
+    "TotalSpentField": "TotalSpent",
+    "Port": 3306,
+    "MysqlSSLMode": -1,
+    "MysqlTLSVersion": "",
+    "SQLiteDatabasePath": ""
+  },
+  "PermissionGroups": {
+    "Default": {
+      "Priority": 99
+    },
+    "Admins": {
+      "Priority": 1,
+      "Commands": {
+        "ChargeCMD": {
+          "Enabled": false,
+          "Cost": 0
+        }
+      }
+    }
   }
 }
